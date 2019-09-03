@@ -1,0 +1,44 @@
+{
+  "products:": [
+    {
+      "name": "Apple, Cherry & Liquorice Preserve",
+      "price": "$17.30",
+      "id": 1
+    },
+    {
+      "name": "Blackberry & Elderberry Conserve",
+      "price": "$17.30",
+      "id": 2
+    },
+    {
+      "name": "Blackcurrant & Coffee Preserve",
+      "price": "$17.30",
+      "id": 3
+    },
+    {
+      "name": "Blood Orange & Rose Petal Marmalade",
+      "price": "$17.30",
+      "id": 4
+    },
+    {
+      "name": "Purple Raspberry Preserve",
+      "price": "$20.75",
+      "id": 5
+    },
+    {
+      "name": "Strawberry & Gooseberry Preserve",
+      "price": "$20.75",
+      "id": 6
+    },
+    {
+      "name": "Strawberry & Rose Petal Preserve",
+      "price": "$20.75",
+      "id": 7
+    },
+    {
+      "name": "Summer Glory Preserve",
+      "price": "$20.75",
+      "id": 8
+    }
+  ]
+}
