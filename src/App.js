@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import Products from "./components/products";
 import Basket from "./components/Basket";
-
+import styles from "./App.css";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { products: [], filteredProducts: [], cartItem: [] };
+    this.state = { products: [], filteredProducts: [], cartItems: [] };
+    this.AddToCart = this.AddToCart.bind(this);
+    this.RemoveCart = this.RemoveCart.bind(this);
   }
-  // ##### get data from database & setstate
+  // ##### get data from database & setState
+
   componentWillMount() {
     fetch("http://localhost:8000/products:")
       .then(res => res.json())
@@ -17,8 +20,15 @@ class App extends Component {
           filteredProducts: data
         })
       );
+
+    // if (localStorage.getItem("cartItems")) {
+    //   this.setState({
+    //     cartItems: JSON.parse(localStorage.getItem("cartّItems"))
+    //   });
+    // }
   }
-  AddToCart(e, product) {
+
+  AddToCart(product) {
     this.setState(state => {
       const cartItems = state.cartItems;
       let productAlreadyInCart = false;
@@ -32,13 +42,13 @@ class App extends Component {
         cartItems.push({ ...product, count: 1 });
       }
       localStorage.setItem("cartItems", JSON.stringify(cartItems));
-      return { cartItems };
+      return cartItems;
     });
   }
-  RemoveCart(item) {
+  RemoveCart(e, item) {
     this.setState(state => {
       const cartItems = state.cartItems.filter(elm => elm.id !== item.id);
-      localStorage.setItem("cartItems", JSON.stringify(cartItems));
+      localStorage.setItem("cartItems", cartItems);
       return { cartItems };
     });
   }
@@ -56,9 +66,9 @@ class App extends Component {
           />
         </div>
         {/* ################ Basket Component */}
-        <div>
+        <div className="basket">
           <Basket
-            cartItem={this.state.cartItem}
+            cartItems={this.state.cartItems}
             RemoveFromCart={this.RemoveCart}
           />
         </div>
