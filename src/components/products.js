@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+// import util from "./components/util";
 class Products extends Component {
   render() {
     const productItems = this.props.products.map(product => (
@@ -17,6 +17,8 @@ class Products extends Component {
           <p>{product.name}</p>
         </a>
         <div>
+          {/* <p>{util.formatCurrency(product.price)}</p> */}
+
           <p>{product.price}</p>
           <button onClick={() => this.props.AddToCart(product)}>
             Add to cart

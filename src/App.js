@@ -2,12 +2,13 @@ import React, { Component } from "react";
 import Products from "./components/products";
 import Basket from "./components/Basket";
 import styles from "./App.css";
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = { products: [], filteredProducts: [], cartItems: [] };
     this.AddToCart = this.AddToCart.bind(this);
-    this.RemoveCart = this.RemoveCart.bind(this);
+    this.RemoveFromCart = this.RemoveFromCart.bind(this);
   }
   // ##### get data from database & setState
 
@@ -45,7 +46,7 @@ class App extends Component {
       return cartItems;
     });
   }
-  RemoveCart(e, item) {
+  RemoveFromCart(item) {
     this.setState(state => {
       const cartItems = state.cartItems.filter(elm => elm.id !== item.id);
       localStorage.setItem("cartItems", cartItems);
@@ -69,7 +70,7 @@ class App extends Component {
         <div className="basket">
           <Basket
             cartItems={this.state.cartItems}
-            RemoveFromCart={this.RemoveCart}
+            RemoveFromCart={this.RemoveFromCart}
           />
         </div>
       </div>
