@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import util from "./components/util";
+import util from "./util";
 class Products extends Component {
   render() {
     const productItems = this.props.products.map(product => (
@@ -10,16 +10,15 @@ class Products extends Component {
           onClick={this.props.AddToCart}
         >
           <img
-            src={`/products/${product.name}.jpg`}
+            src={`/products/${product.name}.png`}
             alt={product.name}
             width="100"
           />
           <p>{product.name}</p>
         </a>
         <div>
-          {/* <p>{util.formatCurrency(product.price)}</p> */}
+          <p>{util.formatCurrency(product.price)}</p>
 
-          <p>{product.price}</p>
           <button onClick={() => this.props.AddToCart(product)}>
             Add to cart
           </button>

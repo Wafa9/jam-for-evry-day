@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import util from "../util";
+import util from "./util";
 export default class Basket extends Component {
   render() {
     const { cartItems } = this.props;
@@ -17,7 +17,7 @@ export default class Basket extends Component {
               {cartItems.map(item => (
                 <li>
                   <b>{item.name}</b>
-                  {item.count} ={item.price * item.count}
+                  {item.count} ={util.formatCurrency(item.price * item.count)}
                   <button onClick={() => this.props.RemoveFromCart(item)}>
                     Remove
                   </button>
@@ -25,7 +25,9 @@ export default class Basket extends Component {
               ))}
             </ul>
             Total:
-            {cartItems.reduce((a, c) => a + c.price * c.count, 0)}
+            {util.formatCurrency(
+              cartItems.reduce((a, c) => a + c.price * c.count, 0)
+            )}
             <button onClick={() => alert("Checkout needs to implement....")}>
               checkout
             </button>
@@ -35,8 +37,3 @@ export default class Basket extends Component {
     );
   }
 }
-// {
-//   util.FormattedNumber(
-//     cartItems.reduce((a, c) => a + c.price * c.count, 0)
-//   )
-// }

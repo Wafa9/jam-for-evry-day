@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import Products from "./components/products";
 import Basket from "./components/Basket";
 import styles from "./App.css";
-
+import Provider from "redux";
+import store from "./store";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -56,24 +57,26 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
-        <h1>jam for every day</h1>
-        <hr />
-        {/* ###### Product Component */}
-        <div>
-          <Products
-            products={this.state.filteredProducts}
-            AddToCart={this.AddToCart}
-          />
+      <Provider store={store}>
+        <div className="container">
+          <h1>jam for every day</h1>
+          <hr />
+          {/* ###### Product Component */}
+          <div>
+            <Products
+              products={this.state.filteredProducts}
+              AddToCart={this.AddToCart}
+            />
+          </div>
+          {/* ################ Basket Component */}
+          <div className="basket">
+            <Basket
+              cartItems={this.state.cartItems}
+              RemoveFromCart={this.RemoveFromCart}
+            />
+          </div>
         </div>
-        {/* ################ Basket Component */}
-        <div className="basket">
-          <Basket
-            cartItems={this.state.cartItems}
-            RemoveFromCart={this.RemoveFromCart}
-          />
-        </div>
-      </div>
+      </Provider>
     );
   }
 }
